@@ -12,6 +12,7 @@ passport.use(
       scope: ['profile', 'email'],
     },
     (accessToken, refreshToken, profile, done) => {
+      console.log('Google Profile:', profile); 
       const user = {
         googleId: profile.id,
         name: profile.displayName,
@@ -26,6 +27,7 @@ passport.use(
 passport.serializeUser((user, done) => {
   const token = jwt.sign(user, process.env.JWT_SECRET, { expiresIn: '1h' });
   console.log(`User created: ${token}`);
+   console.log('User Data for Token:', user); // Log user data used for token creation
   done(null, token);
 });
 
