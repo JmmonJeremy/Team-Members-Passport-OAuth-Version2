@@ -16,7 +16,7 @@ passport.use(
       const user = {
         googleId: profile.id,
         name: profile.displayName,
-        email: profile.emails[0].value,
+        email: profile.emails && profile.emails[0].value,
       };
       done(null, user);
     }
