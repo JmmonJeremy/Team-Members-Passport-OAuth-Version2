@@ -11,13 +11,18 @@
     "http"
   ],
   "securityDefinitions": {
-    "GoogleOAuth2": {
-      "type": "oauth2",
-      "flow": "implicit",
-      "authorizationUrl": "http://localhost:55000/auth/google",
-      "description": "Use Google OAuth2 to authenticate <b>The server uses the hidden values GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET here.</b>"
+    "BearerAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization",
+      "description": "Enter the JWT token with 'Bearer ' prefix"
     }
   },
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
   "paths": {
     "/items/": {
       "get": {
